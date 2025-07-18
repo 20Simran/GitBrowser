@@ -6,13 +6,14 @@
 //
 
 import Foundation
+
+@MainActor
 class GitHubViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var user: GitHubUser?
     @Published var repos: [GitHubRepo] = []
     @Published var favouriteUser: [GitHubUser] = []
     
-    @MainActor
     func fetchUserProfile() async throws {
             guard !username.isEmpty else { return }
             let userURL = URL(string: "https://api.github.com/users/\(username)")!
@@ -26,7 +27,6 @@ class GitHubViewModel: ObservableObject {
             }
         }
     
-    @MainActor
     func fetchUserRepositories() async throws {
         guard !username.isEmpty else { return }
         let reposURL = URL(string: "https://api.github.com/users/\(username)/repos")!

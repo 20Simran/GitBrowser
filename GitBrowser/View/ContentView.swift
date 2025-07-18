@@ -28,9 +28,9 @@ struct ContentView: View {
             .navigationTitle("GitHub Profile Viewer")
             .toolbarTitleDisplayMode(.inline)
             .onChange(of: viewModel.username) { oldValue, newValue in
-                if newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    viewModel.user = nil
-                    viewModel.repos = []
+                    if newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        viewModel.user = nil
+                        viewModel.repos = []
                 }
             }
         }

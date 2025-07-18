@@ -28,6 +28,7 @@ struct UserProfileView: View {
                     Text(user.login)
                         .font(.title)
                         .fontWeight(.bold)
+                        .foregroundColor(.black)
                     
                     Text("@\(user.login)")
                         .font(.subheadline)
