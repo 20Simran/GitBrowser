@@ -17,7 +17,7 @@ struct RepoListView: View {
             Text("User Repositories")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                VStack(spacing: 12.0) {
+                LazyVStack(spacing: 12.0) {
                     ForEach(repos) { repo in
                         getRepoDetails(user: repo)
                     }
