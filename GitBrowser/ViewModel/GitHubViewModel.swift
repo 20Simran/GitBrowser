@@ -10,6 +10,7 @@ class GitHubViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var user: GitHubUser?
     @Published var repos: [GitHubRepo] = []
+    @Published var favouriteUser: [GitHubUser] = []
     
     @MainActor
     func fetchUserProfile() async throws {
@@ -38,12 +39,17 @@ class GitHubViewModel: ObservableObject {
             print(error.localizedDescription)
         }
     }
-    
-    func getUserCreationDate() -> String {
-        let date = FCDateUtility.formatDateString(user?.created_at ?? "",
-                                                  from: "yyyy-MM-dd'T'HH:mm:ssZ",
-                                                  to: "yyyy-MM-dd") ?? ""
-        return date
+        
+    func isFavourite(user: GitHubUser) -> Bool {
+        favouriteUser.contains(where: { $0.login == user.login })
+    }
+
+    func toggleFavorite(user: GitHubUser) {
+        if let index = favouriteUser.firstIndex(where: { $0.login == user.login }) {
+            favouriteUser.remove(at: index)
+        } else {
+            favouriteUser.append(user)
+        }
     }
 }
 

@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5E80666C2E2915F300A9A7CC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5E80666B2E2915F300A9A7CC /* SDWebImageSwiftUI */; };
+		5E8066752E292FAA00A9A7CC /* GitHubDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E8066732E292FAA00A9A7CC /* GitHubDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5E8066462E29141F00A9A7CC /* GitBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E8066742E292FAA00A9A7CC /* GitHubDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitHubDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -37,6 +39,7 @@
 		5E80663D2E29141F00A9A7CC = {
 			isa = PBXGroup;
 			children = (
+				5E8066732E292FAA00A9A7CC /* GitHubDataModel.xcdatamodeld */,
 				5E8066482E29141F00A9A7CC /* GitBrowser */,
 				5E8066472E29141F00A9A7CC /* Products */,
 			);
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E8066752E292FAA00A9A7CC /* GitHubDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +352,19 @@
 			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5E8066732E292FAA00A9A7CC /* GitHubDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5E8066742E292FAA00A9A7CC /* GitHubDataModel.xcdatamodel */,
+			);
+			currentVersion = 5E8066742E292FAA00A9A7CC /* GitHubDataModel.xcdatamodel */;
+			path = GitHubDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5E80663E2E29141F00A9A7CC /* Project object */;
 }

@@ -7,35 +7,50 @@
 
 import SwiftUI
 
+// MARK: - User Repo List
 struct RepoListView: View {
     let repos: [GitHubRepo]
     let onRefresh: () async throws -> Void
-
+    
     var body: some View {
-        List(repos) { repo in
+        VStack(alignment: .leading) {
+            Text("User Repositories")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(spacing: 12.0) {
+                    ForEach(repos) { repo in
+                        getRepoDetails(user: repo)
+                    }
+                }
+                .refreshable {
+                    do {
+                        try await onRefresh()
+                    } catch {
+                        print("Refresh failed:", error.localizedDescription)
+                    }
+                }
+        }
+        .padding(.vertical)
+    }
+    @ViewBuilder
+    func getRepoDetails(user: GitHubRepo) -> some View {
+        CardView(customBackgroundColor: Color.blue.opacity(0.1)) {
             VStack(alignment: .leading) {
-                Text(repo.name)
+                Text(user.name)
                     .font(.headline)
-
-                if let description = repo.description {
+                    .foregroundStyle(Color.blue)
+                
+                if let description = user.description {
                     Text(description)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
-
+                
                 HStack {
-                    Label("\(repo.stargazers_count)", systemImage: "star.fill")
-                    Label("\(repo.forks_count)", systemImage: "tuningfork")
+                    Label("\(user.stargazers_count)", systemImage: "star.fill")
+                    Label("\(user.forks_count)", systemImage: "tuningfork")
                 }
                 .font(.caption)
-            }
-            .padding(.vertical, 5)
-        }
-        .refreshable {
-            do {
-                try await onRefresh()
-            } catch {
-                print("Refresh failed:", error.localizedDescription)
             }
         }
     }
